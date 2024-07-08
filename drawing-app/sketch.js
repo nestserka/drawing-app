@@ -30,7 +30,7 @@ function setup() {
 	toolbox = new Toolbox();
 
 	//add the tools to the toolbox.
-	toolbox.addTool(new FreehandTool());
+	toolbox.addTool(new FreehandTool()); 
 	toolbox.addTool((new BrushTool()));
 	toolbox.addTool(new LineToTool());
 	toolbox.addTool(new SprayCanTool());
