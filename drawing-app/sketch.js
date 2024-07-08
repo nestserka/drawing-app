@@ -18,9 +18,11 @@ function setup() {
 	colourP = new ColourPalette();
     colourP.setup(); 
 
+	//create a rocketSide slider for stamptool
 	rocketSizeSlider = createSlider(10, 100, 50);
     rocketSizeSlider.parent("#sizeOfRocketControlContainer");
 
+	//create a brushSize slider for brushTool
 	brushSizeSlider = createSlider(1, 20, 5); 
     brushSizeSlider.parent("#brushSizeControlContainer");
 
@@ -44,9 +46,6 @@ function setup() {
 
 function draw() {
 	//call the draw function from the selected tool.
-	//hasOwnProperty is a javascript function that tests
-	//if an object contains a particular method or property
-	//if there isn't a draw method the app will alert the user
 	if (toolbox.selectedTool.hasOwnProperty("draw")) {
 		toolbox.selectedTool.draw();
 	} else {

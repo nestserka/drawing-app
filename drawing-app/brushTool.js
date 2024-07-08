@@ -5,7 +5,9 @@ function BrushTool() {
   var previousMouseY = -1;
 
   this.draw = function () {
+    // draw a brush tool on mouse move
     if (mouseIsPressed) {
+    // set the stroke for the brush
       strokeWeight(brushSizeSlider.value());
       if (previousMouseX == -1) {
         previousMouseX = mouseX;

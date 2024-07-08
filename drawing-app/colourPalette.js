@@ -4,6 +4,7 @@ function ColourPalette() {
     var colorPicker;
 
     this.setup = function() {
+		//add colorPicker to choose from colorPallete
         colorPicker = select("#colorPicker");
 
         // Function to handle color changes
