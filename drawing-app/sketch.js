@@ -3,6 +3,7 @@
 var toolbox = null;
 var colourP = null;
 var helpers = null;
+var stampTool = null;
 
 
 function setup() {
@@ -15,15 +16,28 @@ function setup() {
 	//create helper functions and the colour palette
 	helpers = new HelperFunctions();
 	colourP = new ColourPalette();
+    colourP.setup(); 
+
+	rocketSizeSlider = createSlider(10, 100, 50);
+    rocketSizeSlider.parent("#sizeOfRocketControlContainer");
+
+	brushSizeSlider = createSlider(1, 20, 5); 
+    brushSizeSlider.parent("#brushSizeControlContainer");
+
+
 
 	//create a toolbox for storing the tools
 	toolbox = new Toolbox();
 
 	//add the tools to the toolbox.
 	toolbox.addTool(new FreehandTool());
+	toolbox.addTool((new BrushTool()));
 	toolbox.addTool(new LineToTool());
 	toolbox.addTool(new SprayCanTool());
 	toolbox.addTool(new mirrorDrawTool());
+	toolbox.addTool(new StampTool());
+
+
 	background(255);
 
 }
