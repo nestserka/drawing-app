@@ -1,21 +1,24 @@
 //global variables that will store the toolbox colour palette
-//amnd the helper functions
 var toolbox = null;
 var colourP = null;
 var helpers = null;
 var stampTool = null;
 
+var input;
+var img;
+var imgLoaded = false;
+
 function setup() {
-  //create a canvas to fill the content div from index.html
   canvasContainer = select("#content");
   var c = createCanvas(
     canvasContainer.size().width,
     canvasContainer.size().height
   );
+  input = createFileInput(handleFile);
+  input.position(350, 10);
   c.parent("content");
 
-  //create helper functions and the colour palette
-  helpers = new HelperFunctions();
+  helpers = new HelperFunctions(img, imgLoaded, input);
   colourP = new ColourPalette();
   colourP.setup();
 
@@ -36,10 +39,28 @@ function setup() {
 }
 
 function draw() {
-  //call the draw function from the selected tool.
   if (toolbox.selectedTool.hasOwnProperty("draw")) {
     toolbox.selectedTool.draw();
   } else {
     alert("it doesn't look like your tool has a draw method!");
+  }
+
+  if (imgLoaded) {
+    image(img, 0, 0);
+  }
+}
+
+function handleFile(file) {
+  if (file.type === "image") {
+    uploadedImage = loadImage(file.data, () => {
+      uploadedImage.resize(
+        canvasContainer.size().width,
+        canvasContainer.size().height
+      );
+      clear();
+      image(uploadedImage, 0, 0);
+    });
+  } else {
+    alert("Please upload an image file.");
   }
 }
