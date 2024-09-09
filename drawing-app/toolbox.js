@@ -1,3 +1,8 @@
+/**
+ * Description: This part is the base from the templete provided by Introduction to Programming II on week 3.
+ * Url https://www.coursera.org/learn/uol-introduction-to-programming-2/home/week/3 
+ */
+
 function Toolbox() {
   var self = this;
 

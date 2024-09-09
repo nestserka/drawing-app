@@ -1,3 +1,8 @@
+/**
+ * Description: Code is provided from templete provided by Introduction to Programming II on week 3.
+ * Url https://www.coursera.org/learn/uol-introduction-to-programming-2/home/week/3 
+ */
+
 function mirrorDrawTool() {
 	this.name = "mirrorDraw";
 	this.icon = "assets/flip.png";

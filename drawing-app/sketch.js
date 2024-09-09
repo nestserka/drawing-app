@@ -1,4 +1,7 @@
-//global variables that will store the toolbox colour palette
+/**
+ * Description: Partly the code is the base from the templete provided by Introduction to Programming II on week 3.
+ * Url https://www.coursera.org/learn/uol-introduction-to-programming-2/home/week/3 
+ */
 var toolbox = null;
 var colourP = null;
 var helpers = null;
@@ -14,6 +17,8 @@ function setup() {
     canvasContainer.size().width,
     canvasContainer.size().height
   );
+
+  //My code: added input for file upload
   input = createFileInput(handleFile);
   input.position(400, 10);
   c.parent("content");
@@ -51,6 +56,10 @@ function draw() {
 }
 
 function handleFile(file) {
+  if (toolbox.selectedTool instanceof mirrorDrawTool) {
+    alert("Image upload is not allowed while MirrorDrawTool is selected.");
+    return;
+  }
   if (file.type === "image") {
     uploadedImage = loadImage(file.data, () => {
       uploadedImage.resize(
