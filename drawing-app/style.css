@@ -71,7 +71,7 @@ body {
   display: grid;
   height: 100%;
   grid-template-columns: 70px 230px minmax(500px, 1fr);
-  grid-template-rows: 35px minmax(500px, 1fr) 160px;
+  grid-template-rows: 50px minmax(500px, 1fr) 160px;
   grid-template-areas:
     "header header header"
     "sidebar content content"
@@ -88,6 +88,7 @@ body {
 .header {
   background-color: #e1d7b7;
   color: #1e2a5e;
+  padding:5px;
 }
 
 .button-action {
@@ -101,4 +102,13 @@ body {
 
 .menu {
   font-size: 17px;
+}
+
+.action-icon{
+	border: none;
+	padding: 0; 
+	background: none;
+	cursor: pointer; 
+	align-self: center;
+	justify-self: center;
 }
