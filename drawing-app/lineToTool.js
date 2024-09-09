@@ -4,6 +4,7 @@
 function LineToTool(){
 	this.icon = "assets/lineTo.png";
 	this.name = "LineTo";
+	this.lineToolContainer = null;
 
 	var startMouseX = -1;
 	var startMouseY = -1;
@@ -14,7 +15,7 @@ function LineToTool(){
 
 		//only draw when mouse is clicked
 		if(mouseIsPressed){
-			//if it's the start of drawing a new line
+			strokeWeight(this.lineToolContainer.value());
 			if(startMouseX == -1){
 				startMouseX = mouseX;
 				startMouseY = mouseY;
@@ -41,6 +42,17 @@ function LineToTool(){
 			startMouseX = -1;
 			startMouseY = -1;
 		}
+	};
+
+	this.populateOptions = function() {
+		select(".options").html(`
+		  <div class='menu'>
+			<div id="lineToolContainer">Size of Line:</div>
+			</div>
+		`);
+  
+		this.lineToolContainer = createSlider(1, 20, 5);
+		this.lineToolContainer.parent("#lineToolContainer");
 	};
 
 

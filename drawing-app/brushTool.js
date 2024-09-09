@@ -29,7 +29,7 @@ function BrushTool() {
           </div>
       `);
 
-      this.brushSizeSlider = createSlider(1, 20, 5);
+      this.brushSizeSlider = createSlider(10, 100, 10);
       this.brushSizeSlider.parent("#brushSizeControlContainer");
   };
 }
