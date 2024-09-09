@@ -24,7 +24,9 @@ function BrushTool() {
 
   this.populateOptions = function() {
       select(".options").html(`
+        <div class='menu'>
           <div id="brushSizeControlContainer">Size of Brush:</div>
+          </div>
       `);
 
       this.brushSizeSlider = createSlider(1, 20, 5);
