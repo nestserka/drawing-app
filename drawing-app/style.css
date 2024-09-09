@@ -103,12 +103,3 @@ body {
 .menu {
   font-size: 17px;
 }
-
-.action-icon{
-	border: none;
-	padding: 0; 
-	background: none;
-	cursor: pointer; 
-	align-self: center;
-	justify-self: center;
-}

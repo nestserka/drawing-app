@@ -1,86 +1,45 @@
+//global variables that will store the toolbox colour palette
+//amnd the helper functions
 var toolbox = null;
 var colourP = null;
 var helpers = null;
 var stampTool = null;
-var canvasHistory = []; 
-var canvasRedoHistory = [];  
-var isDrawing = false;
 
 function setup() {
-  canvasContainer = select('#content');
-  var c = createCanvas(canvasContainer.size().width, canvasContainer.size().height);
+  //create a canvas to fill the content div from index.html
+  canvasContainer = select("#content");
+  var c = createCanvas(
+    canvasContainer.size().width,
+    canvasContainer.size().height
+  );
   c.parent("content");
 
+  //create helper functions and the colour palette
   helpers = new HelperFunctions();
   colourP = new ColourPalette();
-  colourP.setup(); 
+  colourP.setup();
 
- 
+  //create a toolbox for storing the tools
   toolbox = new Toolbox();
-  toolbox.addTool(new FreehandTool()); 
+
+  //add the tools to the toolbox.
+  toolbox.addTool(new FreehandTool());
   toolbox.addTool(new BrushTool());
   toolbox.addTool(new LineToTool());
   toolbox.addTool(new SprayCanTool());
   toolbox.addTool(new mirrorDrawTool());
   toolbox.addTool(new StampTool());
   toolbox.addTool(new ShapesTool());
+  toolbox.addTool(new EraserTool());
 
   background(255);
-  
-  saveState();
-  
-  document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && event.key === 'z') {
-      undo();
-    } else if (event.ctrlKey && event.key === 'y') {
-      redo(); 
-    }
-  });
 }
 
 function draw() {
+  //call the draw function from the selected tool.
   if (toolbox.selectedTool.hasOwnProperty("draw")) {
     toolbox.selectedTool.draw();
-    if (mouseIsPressed) {
-      if (!isDrawing) {
-        saveState();
-        isDrawing = true;
-      }
-    } else {
-      isDrawing = false;
-    }
   } else {
-    alert("It doesn't look like your tool has a draw method!");
+    alert("it doesn't look like your tool has a draw method!");
   }
 }
-
-
-function saveState() {
-  if (!Array.isArray(canvasHistory)) {
-    canvasHistory = [];
-  }
-  canvasHistory.push(get()); 
-  canvasRedoHistory = []; 
-}
-
-
-function undo() {
-  if (canvasHistory.length > 0) {
-    canvasRedoHistory.push(get());
-    let previousState = canvasHistory.pop();
-    clear();
-    image(previousState, 0, 0);
-  }
-}
-
-
-function redo() {
-  if (canvasRedoHistory.length > 0) {
-  
-    canvasHistory.push(get());
-    let redoState = canvasRedoHistory.pop();
-    clear();
-    image(redoState, 0, 0);
-  }
-}
-
