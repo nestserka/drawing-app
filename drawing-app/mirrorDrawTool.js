@@ -1,6 +1,6 @@
 function mirrorDrawTool() {
 	this.name = "mirrorDraw";
-	this.icon = "assets/mirrorDraw.jpg";
+	this.icon = "assets/flip.png";
 
 	//which axis is being mirrored (x or y) x is default
 	this.axis = "x";
@@ -120,7 +120,7 @@ function mirrorDrawTool() {
 	//toggle the line of symmetry between horizonatl to vertical
 	this.populateOptions = function() {
 		select(".options").html(
-			"<button id='directionButton'>Make Horizontal</button>");
+			"<button id='directionButton' class='button-action'>Make Horizontal</button>");
 		// 	//click handler
 		select("#directionButton").mouseClicked(function() {
 			var button = select("#" + this.elt.id);

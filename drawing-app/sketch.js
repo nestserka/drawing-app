@@ -18,16 +18,6 @@ function setup() {
 	colourP = new ColourPalette();
     colourP.setup(); 
 
-	//create a rocketSide slider for stamptool
-	rocketSizeSlider = createSlider(10, 100, 50);
-    rocketSizeSlider.parent("#sizeOfRocketControlContainer");
-
-	//create a brushSize slider for brushTool
-	brushSizeSlider = createSlider(1, 20, 5); 
-    brushSizeSlider.parent("#brushSizeControlContainer");
-
-
-
 	//create a toolbox for storing the tools
 	toolbox = new Toolbox();
 

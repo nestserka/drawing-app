@@ -3,23 +3,31 @@ function BrushTool() {
   this.name = "brush";
   var previousMouseX = -1;
   var previousMouseY = -1;
+  this.brushSizeSlider = null;
 
-  this.draw = function () {
-    // draw a brush tool on mouse move
-    if (mouseIsPressed) {
-    // set the stroke for the brush
-      strokeWeight(brushSizeSlider.value());
-      if (previousMouseX == -1) {
-        previousMouseX = mouseX;
-        previousMouseY = mouseY;
+  this.draw = function() {
+      if (mouseIsPressed) {
+          strokeWeight(this.brushSizeSlider.value());
+          if (previousMouseX == -1) {
+              previousMouseX = mouseX;
+              previousMouseY = mouseY;
+          } else {
+              line(previousMouseX, previousMouseY, mouseX, mouseY);
+              previousMouseX = mouseX;
+              previousMouseY = mouseY;
+          }
       } else {
-        line(previousMouseX, previousMouseY, mouseX, mouseY);
-        previousMouseX = mouseX;
-        previousMouseY = mouseY;
+          previousMouseX = -1;
+          previousMouseY = -1;
       }
-    } else {
-      previousMouseX = -1;
-      previousMouseY = -1;
-    }
+  };
+
+  this.populateOptions = function() {
+      select(".options").html(`
+          <div id="brushSizeControlContainer">Size of Brush:</div>
+      `);
+
+      this.brushSizeSlider = createSlider(1, 20, 5);
+      this.brushSizeSlider.parent("#brushSizeControlContainer");
   };
 }

@@ -6,7 +6,6 @@
 
     <script src="sketch.js"></script>
 
-    <!-- add extra scripts below -->
     <script src="toolbox.js"></script>
     <script src="colourPalette.js"></script>
     <script src="helperFunctions.js"></script>
@@ -23,18 +22,17 @@
   <body>
     <div class="wrapper">
       <div class="box header">
-        My Drawing App
+        Drawing App
 
-        <button id="clearButton">Clear</button>
-        <button id="saveImageButton">Save Image</button>
+        <button id="clearButton" class="button-action">Clear</button>
+        <button id="saveImageButton" class="button-action">Save Image</button>
       </div>
-      <div class="box" id="sidebar"></div>
-      <div id="content"></div>
-      <div class="colourPalette">
+      <div class="sidebar-wrapper">
+        <div class="box" id="sidebar"></div>
         <input type="color" id="colorPicker" value="#000000" />
-        <div id="sizeOfRocketControlContainer">Size of Rocket:</div>
-      <div id="brushSizeControlContainer">Size of Brush:</div>
       </div>
+      <div id="content"></div>
+
       <div class="box options">
       </div>
     </div>
