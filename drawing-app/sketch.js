@@ -15,7 +15,7 @@ function setup() {
     canvasContainer.size().height
   );
   input = createFileInput(handleFile);
-  input.position(350, 10);
+  input.position(400, 10);
   c.parent("content");
 
   helpers = new HelperFunctions(img, imgLoaded, input);
